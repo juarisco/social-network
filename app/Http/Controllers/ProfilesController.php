@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ProfilesController extends Controller
 {
@@ -58,9 +60,9 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit()
     {
-        //
+        return view('profiles.edit')->with('info', Auth::user()->profile);
     }
 
     /**
@@ -70,9 +72,24 @@ class ProfilesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        // dd($request->all());
+
+        $this->validate($request, [
+            'location' => 'required',
+            'about' => 'required|max:255'
+        ]);
+
+        Auth::user()->profile()->update([
+            'location' => $request->location,
+            'about' => $request->about
+        ]);
+
+        // dd(Auth::user()->profile);
+        Session::flash('success', 'Profile updated.');
+
+        return redirect()->back();
     }
 
     /**
