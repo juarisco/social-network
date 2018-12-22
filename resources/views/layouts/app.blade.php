@@ -85,5 +85,15 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
+    @if(Session::has('success'))
+        <script>
+            new Noty({
+                type:'success',
+                layout:'topLeft',
+                // theme:'sunset',
+                text:'{{ Session::get('success') }}'
+            }).show();
+        </script>
+    @endif
 </body>
 </html>
