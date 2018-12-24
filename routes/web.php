@@ -55,4 +55,5 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/profile/update/profile', 'ProfilesController@update')->name('profile.update');
 
     Route::get('/check_relationship_status/{id}', 'FriendshipsController@check')->name('check');
+
 });
