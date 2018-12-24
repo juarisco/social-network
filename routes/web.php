@@ -15,9 +15,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/check_relationship_status/{id}', function ($id) {
-    return \App\User::find($id);
-});
 
 // Route::get('/add_friend', function () {
 //     return \App\User::find(1)->add_friend(4);
@@ -56,4 +53,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/profile/{slug}', 'ProfilesController@index')->name('profile');
     Route::get('/profile/edit/profile', 'ProfilesController@edit')->name('profile.edit');
     Route::post('/profile/update/profile', 'ProfilesController@update')->name('profile.update');
+
+    Route::get('/check_relationship_status/{id}', 'FriendshipsController@check')->name('check');
 });
