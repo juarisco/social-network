@@ -15,6 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/check_relationship_status/{id}', function ($id) {
+    return \App\User::find($id);
+});
+
 // Route::get('/add_friend', function () {
 //     return \App\User::find(1)->add_friend(4);
 // });
