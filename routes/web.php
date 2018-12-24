@@ -15,28 +15,32 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/add_friend', function () {
-    return \App\User::find(1)->add_friend(4);
-});
+// Route::get('/add_friend', function () {
+//     return \App\User::find(1)->add_friend(4);
+// });
 
-Route::get('/accept_friend', function () {
-    return \App\User::find(4)->accept_friend(1);
-});
+// Route::get('/accept_friend', function () {
+//     return \App\User::find(4)->accept_friend(1);
+// });
 
-Route::get('/pending_friends', function () {
-    return \App\User::find(4)->pending_friend_requests();
-});
+// Route::get('/pending_friends', function () {
+//     return \App\User::find(4)->pending_friend_requests();
+// });
 
-Route::get('/ids', function () {
-    return \App\User::find(4)->friends_ids();
-});
+// Route::get('/ids', function () {
+//     return \App\User::find(4)->friends_ids();
+// });
 
-Route::get('/is', function () {
-    return \App\User::find(1)->is_friends_with(2);
-});
+// Route::get('/is', function () {
+//     return \App\User::find(1)->is_friends_with(2);
+// });
 
-Route::get('/friends', function () {
-    return \App\User::find(1)->friends();
+// Route::get('/friends', function () {
+//     return \App\User::find(1)->friends();
+// });
+
+Route::get('ch', function () {
+    return \App\User::find(5)->add_friend(3);
 });
 
 Auth::routes();
