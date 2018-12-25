@@ -34,9 +34,9 @@ class FriendshipsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function add_friend($id)
     {
-        //
+        return Auth::user()->add_friend($id);
     }
 
     /**

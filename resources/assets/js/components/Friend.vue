@@ -1,14 +1,12 @@
 <template>
-  <div class="container">
-    <div class="row">
-      <div class="text-center" v-if="loading">Loading...</div>
-      <p class="text-center" v-if="!loading">
-        <button class="btn btn-success btn-xs" v-if="status == 0">Add Friend</button>
-        <button class="btn btn-success btn-xs" v-if="status == 'pending'">Accept Friend</button>
-        <span class="text-success" v-if="status == 'waiting'">Waiting for response</span>
-        <span class="text-success" v-if="status == 'friends'">Friends</span>
-      </p>
-    </div>
+  <div>
+    <div class="text-center" v-if="loading">Loading...</div>
+    <p class="text-center" v-if="!loading">
+      <button class="btn btn-success btn-xs" v-if="status == 0" @click="add_friend">Add Friend</button>
+      <button class="btn btn-success btn-xs" v-if="status == 'pending'">Accept Friend</button>
+      <span class="text-success" v-if="status == 'waiting'">Waiting for response</span>
+      <span class="text-success" v-if="status == 'friends'">Friends</span>
+    </p>
   </div>
 </template>
 
@@ -29,6 +27,18 @@ export default {
       status: "",
       loading: true
     };
+  },
+  methods: {
+    add_friend() {
+      this.loading = true;
+      this.$http.get("/add_friend/" + this.profile_user_id).then(r => {
+        console.log(r);
+        if (r.body == 1) {
+          this.status = "waiting";
+          this.loading = false;
+        }
+      });
+    }
   }
 };
 </script>
