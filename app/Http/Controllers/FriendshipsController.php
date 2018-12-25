@@ -45,9 +45,10 @@ class FriendshipsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function accept_friend($id)
     {
         //
+        return Auth::user()->accept_friend($id);
     }
 
     /**
