@@ -16,6 +16,10 @@
     "vue-resource": "^1.0.3"
   },
   "dependencies": {
+    "laravel-echo": "^1.5.2",
     "noty": "^3.2.0-beta"
+  },
+  "optionalDependencies": {
+    "fsevents": "^1.2.4"
   }
 }
