@@ -39,6 +39,11 @@ export default {
         console.log(r);
         if (r.body == 1) {
           this.status = "waiting";
+          noty({
+            type: "success",
+            layout: "bottomLeft",
+            text: "Friend request sent."
+          });
           this.loading = false;
         }
       });
@@ -49,6 +54,11 @@ export default {
         console.log(r);
         if (r.body == 1) {
           this.status = "friends";
+          new Noty({
+            type: "success",
+            layout: "bottomLeft",
+            text: "You are now friends. Go ahead and hangout."
+          }).show();
           this.loading = false;
         }
       });
